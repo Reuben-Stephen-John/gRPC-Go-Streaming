@@ -9,7 +9,7 @@ import (
 
 	// "time"
 
-	pb "github.com/Reuben-Stephen-John/grpc-unary/greet/proto"
+	pb "github.com/Reuben-Stephen-John/grpc-streaming/greet/proto"
 
 	"google.golang.org/grpc"
 	// "google.golang.org/grpc/credentials"
@@ -51,7 +51,7 @@ func main() {
 
 	s := grpc.NewServer()
 	pb.RegisterGreetServiceServer(s, &Server{})
-	
+
 	// defer s.Stop()
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("Failed to serve: %v\n", err)

@@ -1,4 +1,4 @@
-module github.com/Reuben-Stephen-John/grpc-unary
+module github.com/Reuben-Stephen-John/grpc-streaming
 
 go 1.21.3
 

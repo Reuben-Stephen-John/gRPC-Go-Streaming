@@ -4,7 +4,7 @@ import (
 	"context"
 	"log"
 
-	pb "github.com/Reuben-Stephen-John/grpc-unary/greet/proto"
+	pb "github.com/Reuben-Stephen-John/grpc-streaming/greet/proto"
 )
 
 func (s *Server) Greet(ctx context.Context, in *pb.GreetRequest) (*pb.GreetResponse, error) {
