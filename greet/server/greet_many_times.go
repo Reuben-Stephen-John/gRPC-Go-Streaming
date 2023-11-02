@@ -1,11 +1,13 @@
 package main
+
 import (
 	"fmt"
 	"log"
 	
 	pb "github.com/Reuben-Stephen-John/grpc-streaming/greet/proto"
 )
-func (s *Server) GreetManyTimes(in *pb.GreetRequest, stream pb.GreetService_GreetManyTimesServer) error  {
+
+func (*Server) GreetManyTimes(in *pb.GreetRequest, stream pb.GreetService_GreetManyTimesServer) error  {
 	log.Printf("GreetManyTimes was invoked with %v\n", in)
 
 	for i := 0; i < 10; i++ {
