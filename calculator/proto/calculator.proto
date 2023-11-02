@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+// protoc -Igreet/proto --go_out=. --go-grpc_out=. greet/proto/dummy.proto
+// protoc -Igreet/proto --go_out=. --go_opt=module=github.com/Reuben-Stephen-John/grpc-unary --go-grpc_out=. --go-grpc_opt=module=github.com/Reuben-Stephen-John/grpc-unary greet/proto/dummy.proto
+//protoc -I${PROJECT}/proto --go_opt=module=${YOUR_MODULE} --go_out=. ${PROJECT}/proto/*.proto
+package calculator;
+option go_package="github.com/Reuben-Stephen-John/grpc-streaming/calculator/proto";
+import "sqrt.proto";
+
+service CalculatorService{
+    rpc Sqrt (SqrtRequest) returns (SqrtResponse);
+}
