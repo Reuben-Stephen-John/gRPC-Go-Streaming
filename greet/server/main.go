@@ -12,7 +12,7 @@ import (
 	pb "github.com/Reuben-Stephen-John/grpc-streaming/greet/proto"
 
 	"google.golang.org/grpc"
-	// "google.golang.org/grpc/credentials"
+	"google.golang.org/grpc/credentials"
 )
 
 type Server struct {
@@ -33,23 +33,23 @@ func main() {
 	// defer lis.Close()
 	log.Printf("Listening at %s\n", addr)
 
-	// opts := []grpc.ServerOption{}
+	opts := []grpc.ServerOption{}
 
-	// tls := false // change that to true if needed
-	// if tls {
-	//     certFile := "ssl/server.crt"
-	//     keyFile := "ssl/server.pem"
-	//     creds, err := credentials.NewServerTLSFromFile(certFile, keyFile)
+	tls := true // change that to true if needed
+	if tls {
+	    certFile := "ssl/server.crt"
+	    keyFile := "ssl/server.pem"
+	    creds, err := credentials.NewServerTLSFromFile(certFile, keyFile)
 
-	//     if err != nil {
-	//         log.Fatalf("Failed loading certificates: %v\n", err)
-	//     }
-	//     opts = append(opts, grpc.Creds(creds))
-	// }
+	    if err != nil {
+	        log.Fatalf("Failed loading certificates: %v\n", err)
+	    }
+	    opts = append(opts, grpc.Creds(creds))
+	}
 
 	// opts = append(opts, grpc.ChainUnaryInterceptor(LogInterceptor(), CheckHeaderInterceptor()))
 
-	s := grpc.NewServer()
+	s := grpc.NewServer(opts...)
 	pb.RegisterGreetServiceServer(s, &Server{})
 
 	// defer s.Stop()
